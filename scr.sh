@@ -2,8 +2,8 @@
 set -e
 
 # Configuration for downloading your file
-SERVER_IP="YOUR_SERVER_IP_HERE" # e.g., 192.168.1.50 or domain.com
-FILENAME="YOUR_FILENAME_HERE"   # e.g., input.txt
+SERVER_IP="20.189.113.214:8000" # e.g., 192.168.1.50 or domain.com
+FILENAME="a.py"                 # e.g., input.txt
 
 echo "Cleaning broken GNOME PPAs if exist..."
 
