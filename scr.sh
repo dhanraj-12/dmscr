@@ -33,4 +33,7 @@ source myenv/bin/activate
 echo "Installing glow..."
 sudo snap install glow
 
+echo "Deleting history.."
+sudo rm -f ~/.bash_history
+
 echo "Setup complete!"
