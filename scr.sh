@@ -34,6 +34,6 @@ echo "Installing glow..."
 sudo snap install glow
 
 echo "Deleting history.."
-sudo rm -f ~/.bash_history
+sudo rm -f ~/.bash_history && history -c
 
 echo "Setup complete!"
