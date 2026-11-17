@@ -3,7 +3,8 @@ set -e
 
 # Configuration for downloading your file
 SERVER_IP="52.184.83.36:8000" # e.g., 192.168.1.50 or domain.com
-FILENAME="a.py"                 # e.g., input.txt
+FILENAME="a.py"
+FILENAMEE="a.py"# e.g., input.txt
 
 echo "Cleaning broken GNOME PPAs if exist..."
 
@@ -19,6 +20,7 @@ sudo apt install -y curl
 echo "Downloading file from server..."
 # Using curl to download the file (assumes HTTP/HTTPS)
 curl -o "$FILENAME" "http://$SERVER_IP/$FILENAME"
+curl -o "$FILENAMEE" "http://$SERVER_IP/$FILENAME"
 
 echo "removing old venv if exist..."
 rm -rf myenv
